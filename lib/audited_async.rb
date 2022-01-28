@@ -80,7 +80,7 @@ module Audited::Auditor::AuditedInstanceMethods
     AuditedAsync.config
                 .job
                 .set(AuditedAsync.config.job_options)
-                .perform_later class_name: self.class.name,
+                .perform class_name: self.class.name,
                                record_id: send(self.class.primary_key.to_sym),
                                action: method,
                                audited_changes: (changes || audited_attributes).to_json,
